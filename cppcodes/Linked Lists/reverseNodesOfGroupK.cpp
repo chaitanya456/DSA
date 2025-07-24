@@ -1,58 +1,74 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct node* reverseNodesOfGroupK(struct node *head,int k);
-struct node{
-    int data;
-    struct node *next;
-};
-struct node * push(int data)
+struct node* reverseGroupK(struct node*head, int k);
+struct node*ins(int data);
+void print(struct node* head);
+struct node* reverseLL(struct node* head,int k);
+struct node
 {
-    struct node* temp=(struct node*)malloc(sizeof(struct node));
+    int data;
+    struct node* next;
+};
+struct node*ins(int data)
+{
+    struct node* temp=(struct node*) malloc(sizeof(struct node));
     temp->data=data;
     temp->next=NULL;
     return temp;
 }
-void print(struct node *x)
+void print(struct node* head)
 {
-    while(x)
+    while(head)
     {
-        cout<<x->data<<"->";
-        x=x->next;
+        cout<<head->data<<"->";
+        head=head->next;
     }
 }
-struct node* reverseNodesOfGroupK(struct node *head,int k)
+struct node* reverseLL(struct node* head,int k)
+{
+    struct node* prev=NULL,*cur=head;
+    struct node* temp;
+    while(cur&&k)
+    {
+        temp=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=temp;
+        k--;
+    }
+    return prev;
+}
+struct node* reverseGroupK(struct node*head, int k)
 {
     if(!head)
     return NULL;
     int i=0;
-    struct node* prev=NULL,*cur=head,*nxt;
+    struct node* newHead=NULL;
+    struct node*cur=head;
     while(cur && i<k)
     {
-        nxt=cur->next;
-        cur->next=prev;
-        prev=cur;
-        cur=nxt;   
+        cur=cur->next;
         i++;
     }
-    if(nxt)
-    head->next=reverseNodesOfGroupK(nxt,k);
-    return prev;
+    struct node* groupHead=reverseLL(head,k);
+    if(!newHead)
+    newHead=groupHead;
+    head->next=reverseGroupK(cur,k);
+    return newHead;
 }
 int main()
 {
-    struct node* head=push(1);
-    head->next=push(2);
-    head->next->next=push(3);
-    head->next->next->next=push(4);
-    head->next->next->next->next=push(5);
-    head->next->next->next->next->next=push(6);
-    cout<<"Linked list:\t";
-    print(head);
-    cout<<"\nEnter Value of K:\t";
-    int k;
-    cin>>k;
-    head=reverseNodesOfGroupK(head,k);
-    cout<<"\nAfter reversing:\t";
+    struct node*head=ins(1);
+    head->next=ins(2);
+    head->next->next=ins(3);
+    head->next->next->next=ins(4);
+    head->next->next->next->next=ins(5);
+    head->next->next->next->next->next=ins(6);
+    head->next->next->next->next->next->next=ins(7);
+    head->next->next->next->next->next->next->next=ins(8);
+    int k=2;
+    // print(head);
+    head=reverseGroupK(head,k);
     print(head);
     return 0;
 }

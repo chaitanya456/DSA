@@ -8,6 +8,9 @@
         "list": "cpp",
         "vector": "cpp",
         "string_view": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "new": "cpp",
+        "string": "cpp",
+        "ranges": "cpp"
     }
 }
