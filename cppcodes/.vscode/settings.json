@@ -11,6 +11,7 @@
         "span": "cpp",
         "new": "cpp",
         "string": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "valarray": "cpp"
     }
 }
