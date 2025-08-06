@@ -51,15 +51,12 @@ class Graph
             reverseAdj[x].push_back(i);
         }
     }
-    bool hasPath(int u, int v)
-    {
-        
-    }
     void kosaraju()
     {
         int i=0,j;
         vector<int> temp;
         vector<vector<int>>sccs;
+        //First DFS Pass
         for(;i<n;i++)
         if(!vis[i])
         dfs(i);
@@ -70,6 +67,7 @@ class Graph
         
         //reverse
         reverse();
+        //Pop each element from stack
        while(!st.empty())
        {
             int k=st.top();
@@ -86,7 +84,7 @@ class Graph
             cout<<sccs[i][j]<<" ";
             cout<<endl;
        }
-       makeMetaGraph(adj);
+    //    makeMetaGraph(adj);
     }
 };
 int main()
