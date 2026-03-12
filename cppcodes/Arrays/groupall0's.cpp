@@ -19,9 +19,7 @@ int main()
                 r--;
             }
             else
-            {
-                r--;
-            }
+            r--;
         }
     }
     for(auto x: a)

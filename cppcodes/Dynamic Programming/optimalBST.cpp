@@ -25,8 +25,7 @@ void func(vector<int>&freq, int n)
             for(int k=i;k<=j;k++)
             {
                 int val=sum+(k-1<i?0:T[i][k-1])+(k+1>j?0:T[k+1][j]);
-                if(val<T[i][j])
-                T[i][j]=val;
+                T[i][j]=min(T[i][j],val);
             }
         }
     }

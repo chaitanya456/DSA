@@ -33,12 +33,12 @@ void func(vector<vector<int> >&a, int m,int n)
             ans=max(T[i][j],ans);
         }
     }
-    // for(i=0;i<=m;i++)
-    // {
-    //     for(j=0;j<=n;j++)
-    //     cout<<T[i][j]<<" ";
-    //     cout<<endl;
-    // }
+    for(i=0;i<=m;i++)
+    {
+        for(j=0;j<=n;j++)
+        cout<<T[i][j]<<" ";
+        cout<<endl;
+    }
     cout<<"Square Matrix Size:\t"<<ans<<endl;
     cout<<"Total Elements:\t"<<pow(ans,2)<<endl;
 }

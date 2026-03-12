@@ -26,8 +26,7 @@ int eggDropping(int eggs,int floors)
                 for(int k=1;k<=j;k++)
                 {
                     temp=1+max(T[i-1][k-1],T[i][j-k]);
-                    if(temp<T[i][j])
-                    T[i][j]=temp;
+                    T[i][j]=min(T[i][j],temp);
                 }
             }
         }
