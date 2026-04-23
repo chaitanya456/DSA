@@ -22,7 +22,7 @@ void appendNodes(Node* root, int n1,int n2, vector<int>&res)
         appendNodes(root->right,n1,n2,res);
     }
     else if(root->data<n1)
-    appendNodes(root->left,n1,n2,res);
+    appendNodes(root->right,n1,n2,res);
     else appendNodes(root->left,n1,n2,res);
 }
 int main()
